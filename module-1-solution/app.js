@@ -7,6 +7,7 @@ function LunchCheckController($scope) {
 	$scope.message = "";
 	$scope.much = false;
 	$scope.checkMyLunch = function() {
+		$scope.much = false;
 		var total = 0;
 		var lunchContent = [];
 		if ($scope.lunch === undefined || $scope.lunch === "") {
