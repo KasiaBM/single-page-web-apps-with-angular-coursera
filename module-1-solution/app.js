@@ -7,10 +7,10 @@ function LunchCheckController($scope) {
 	$scope.message = "";
 	$scope.much = false;
 	$scope.checkMyLunch = function() {
-		$scope.much = false;
 		var total = 0;
 		var lunchContent = [];
 		if ($scope.lunch === undefined || $scope.lunch === "") {
+			$scope.much = false;
 			$scope.message = "Please enter data first.";
 		}
 		else {
