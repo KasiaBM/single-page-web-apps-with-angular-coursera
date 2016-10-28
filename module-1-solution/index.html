@@ -6,8 +6,9 @@
 	<link rel="stylesheet" href="styles/bootstrap.min.css">
 	<style>
 		.message { font-size: 1.3em; font-weight: bold; }
-		.tooMuch { color: red; }
-		.enough  { color: green; }
+		.food { color: green; border: 1px solid green; border-radius: 5px; padding: 5px; }
+		.noFood  { color: red; border: 1px solid red; border-radius: 5px; padding: 5px; }
+		.noMessage { border: 0; }
 	</style>
 </head>
 <body>
@@ -21,7 +22,8 @@
 		<div class="form-group">
 			<button class="btn btn-default" ng-click="checkMyLunch()">Check If Too Much</button>
 		</div>
-		<div class="form-group message" ng-class="{'tooMuch': !much, 'enough': much}">
+		<div class="form-group message" 
+		ng-class="{'noFood': !isLunch, 'food': isLunch, 'message': !empty, 'noMessage': empty}">
 			{{message}}
 		</div>
 	</div>
