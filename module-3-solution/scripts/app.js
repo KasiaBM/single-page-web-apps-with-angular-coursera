@@ -44,7 +44,7 @@ function MenuSearchService($http, MenuBasePath) {
 	service.getMatchedMenuItems = function(searchTerm) {
 		return $http({
 			method: "GET",
-			url: (MenuBasePath + "/menu_items.json")
+			url: (MenuBasePath + "/menu_items.json/")
 		}).then(function(result) {
 			var items = result.data.menu_items;
 			var foundItems = [];
