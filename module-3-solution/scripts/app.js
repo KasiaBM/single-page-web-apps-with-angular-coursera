@@ -10,18 +10,24 @@ NarrowItDownController.$inject = ["MenuSearchService"];
 function NarrowItDownController(MenuSearchService) {
 	var narrowIt = this;
 	narrowIt.found = [];
+	narrowIt.isEmpty = false;
 	narrowIt.searchTerm = "";
 	
 	narrowIt.getMenuItems = function(searchTerm) {
+		
 		narrowIt.found = [];
 		if (narrowIt.searchTerm) {
 			var promise = MenuSearchService.getMatchedMenuItems(searchTerm);
 			promise.then(function(response) {
 				narrowIt.found = response;
+				narrowIt.isEmpty = false;
 			})
 			.catch(function(error) {
 				console.log("Something went terribly wrong...");
 			});
+		}
+		if (narrowIt.found.length === 0) {
+			narrowIt.isEmpty = true;
 		}
 	};
 	
@@ -30,10 +36,6 @@ function NarrowItDownController(MenuSearchService) {
 		if (narrowIt.found.length == 0) {
 			narrowIt.error = "Nothing to remove";
 		}
-	};
-	
-	narrowIt.isEmpty = function() {
-		return narrowIt.found.length === 0;
 	};
 }
 
